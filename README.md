@@ -8,3 +8,4 @@ By leveraging convolution block attention layers and self-attention mechanisms, 
 4. The classification model (ResNet18) was trained with cross-entropy as a loss function.
 5. Archived decent accuracy on this dataset and extracted generated channel maps and spatial maps from every layer
 6. Visualized these attention maps in a grid(spatial and channel combined) alongside segmentations to relate them(layerwise).
+The project report can be found here https://docs.google.com/document/d/1QGEjP04mJ_3LRJwLoFx13VBjrYa8D3EM/edit?usp=sharing&ouid=108175739532904544429&rtpof=true&sd=true
