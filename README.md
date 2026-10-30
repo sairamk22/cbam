@@ -107,3 +107,5 @@ python main.py
 - Woo et al., *CBAM: Convolutional Block Attention Module*, ECCV 2018. [arXiv:1807.06521](https://arxiv.org/abs/1807.06521)
 - He et al., *Deep Residual Learning for Image Recognition*, CVPR 2016.
 - Everingham et al., *The PASCAL Visual Object Classes Challenge 2012*.
+
+- Full report here https://claude.ai/artifact/PHY47kujZd77T5iaquCEeP#2dd04a42-965f.m7z8wrh7vz7.17154
