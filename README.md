@@ -72,6 +72,40 @@ Segmentation answers **"where is the object?"** Attention answers **"where is th
 
 **In short:** attention is not segmentation. It is the network's *evidence*: mostly on the object, partly on context, and sometimes fooled by similar-looking structure.
 
+## Example results
+
+Each figure shows the hand-drawn segmentation (left), the original image (middle) and the CBAM attention map (right).
+
+### Best cases: clean backgrounds
+| Image 26 (IoU 0.75) | Image 84 (IoU 0.77) |
+|---|---|
+| ![Image 26](results/figures/026.png) | ![Image 84](results/figures/084.png) |
+
+| Image 124 (IoU 0.75) | Image 52 (IoU 0.77) |
+|---|---|
+| ![Image 124](results/figures/124.png) | ![Image 52](results/figures/052.png) |
+
+### Multiple objects found
+![Four scooters, image 93](results/figures/093.png)
+
+### Failure cases
+**Distracted by look-alikes:** the attention follows the contrail and the moon instead of the small plane (IoU 0.04).
+![Image 25](results/figures/025.png)
+
+**Busy scene:** wires, rails and the station light up as well as the train.
+![Image 45](results/figures/045.png)
+
+**Close-up:** the attention traces the edges correctly, but the scoring gives a near-zero IoU.
+![Image 75](results/figures/075.png)
+
+### All 133 results
+Overview sheets with the true class, prediction, IoU and correlation for every image (green = correct prediction, red = wrong):
+
+![Sheet 1](results/contact_sheets/s00.png)
+![Sheet 2](results/contact_sheets/s01.png)
+
+The rest are in [`results/contact_sheets/`](results/contact_sheets/), and the individual figures are in [`results/figures/`](results/figures/). Scores for every image are in [`results/scores.txt`](results/scores.txt).
+
 ## Limitations
 - The median threshold caps IoU for small objects, because about half the image is always marked as "attended".
 - VOC "void" boundary pixels aren't removed before comparison. For close-ups, the mask collapses to the object outline, which lowers IoU.
@@ -94,6 +128,10 @@ model.py     # PyTorch Lightning training module
 loader.py    # Pascal VOC classification and segmentation loaders
 main.py      # Training, attention visualization and metric computation
 cbam_final.ipynb  # Colab notebook with full run and outputs
+results/
+  figures/         # 133 figures: segmentation, image, attention map (000.png … 132.png)
+  contact_sheets/  # 12 overview sheets with class, prediction, IoU and correlation
+  scores.txt       # per-image true class, prediction, IoU and correlation
 ```
 
 ## Running
